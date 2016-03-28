@@ -1,0 +1,863 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3974490D1CA9725E00794FDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974490C1CA9725E00794FDA /* AppDelegate.swift */; };
+		3974490F1CA9725E00794FDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974490E1CA9725E00794FDA /* ViewController.swift */; };
+		397449121CA9725E00794FDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 397449101CA9725E00794FDA /* Main.storyboard */; };
+		397449141CA9725E00794FDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 397449131CA9725E00794FDA /* Assets.xcassets */; };
+		397449171CA9725E00794FDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 397449151CA9725E00794FDA /* LaunchScreen.storyboard */; };
+		397449221CA9725E00794FDA /* AssistMobileTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397449211CA9725E00794FDA /* AssistMobileTestTests.swift */; };
+		3974492D1CA9725E00794FDA /* AssistMobileTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974492C1CA9725E00794FDA /* AssistMobileTestUITests.swift */; };
+		397449661CA973DD00794FDA /* AssistMobile.h in Headers */ = {isa = PBXBuildFile; fileRef = 397449651CA973DD00794FDA /* AssistMobile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3974496D1CA973DE00794FDA /* AssistMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397449631CA973DD00794FDA /* AssistMobile.framework */; };
+		397449741CA973DE00794FDA /* AssistMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397449731CA973DE00794FDA /* AssistMobileTests.swift */; };
+		397449781CA973DE00794FDA /* AssistMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 397449631CA973DD00794FDA /* AssistMobile.framework */; };
+		397449791CA973DE00794FDA /* AssistMobile.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 397449631CA973DD00794FDA /* AssistMobile.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		397449831CA9752A00794FDA /* AssistPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397449821CA9752A00794FDA /* AssistPay.swift */; };
+		397449851CA9758000794FDA /* PayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397449841CA9758000794FDA /* PayController.swift */; };
+		397449871CA975C500794FDA /* ResultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397449861CA975C500794FDA /* ResultService.swift */; };
+		397449891CA975F400794FDA /* SoapRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397449881CA975F400794FDA /* SoapRequest.swift */; };
+		3974498B1CA9763E00794FDA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974498A1CA9763E00794FDA /* Configuration.swift */; };
+		3974498D1CA9769000794FDA /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974498C1CA9769000794FDA /* RequestData.swift */; };
+		3974498F1CA9771900794FDA /* DeviceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974498E1CA9771900794FDA /* DeviceLocation.swift */; };
+		397449911CA9774E00794FDA /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397449901CA9774E00794FDA /* Registration.swift */; };
+		397449931CA9778100794FDA /* PayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397449921CA9778100794FDA /* PayData.swift */; };
+		397449961CA9789D00794FDA /* PayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397449951CA9789D00794FDA /* PayView.xib */; };
+		397449981CA978EA00794FDA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397449971CA978EA00794FDA /* Settings.swift */; };
+		3974499A1CA9792700794FDA /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397449991CA9792700794FDA /* Signature.swift */; };
+		3974499D1CA9802A00794FDA /* SignatureKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974499C1CA9802A00794FDA /* SignatureKeyViewController.swift */; };
+		3974499F1CA980E900794FDA /* SettingsControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974499E1CA980E900794FDA /* SettingsControllerViewController.swift */; };
+		397449A11CA9811D00794FDA /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397449A01CA9811D00794FDA /* KeyView.swift */; };
+		397449A31CA9814900794FDA /* CustomerSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397449A21CA9814900794FDA /* CustomerSettingsViewController.swift */; };
+		397449A51CA9818A00794FDA /* CustomerExtraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397449A41CA9818A00794FDA /* CustomerExtraSettingsViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3974491E1CA9725E00794FDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 397449011CA9725E00794FDA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 397449081CA9725E00794FDA;
+			remoteInfo = AssistMobileTest;
+		};
+		397449291CA9725E00794FDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 397449011CA9725E00794FDA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 397449081CA9725E00794FDA;
+			remoteInfo = AssistMobileTest;
+		};
+		3974496E1CA973DE00794FDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 397449011CA9725E00794FDA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 397449621CA973DD00794FDA;
+			remoteInfo = AssistMobile;
+		};
+		397449701CA973DE00794FDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 397449011CA9725E00794FDA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 397449081CA9725E00794FDA;
+			remoteInfo = AssistMobileTest;
+		};
+		397449761CA973DE00794FDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 397449011CA9725E00794FDA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 397449621CA973DD00794FDA;
+			remoteInfo = AssistMobile;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3974497D1CA973DE00794FDA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				397449791CA973DE00794FDA /* AssistMobile.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		397449091CA9725E00794FDA /* AssistMobileTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssistMobileTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3974490C1CA9725E00794FDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3974490E1CA9725E00794FDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		397449111CA9725E00794FDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		397449131CA9725E00794FDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		397449161CA9725E00794FDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		397449181CA9725E00794FDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3974491D1CA9725E00794FDA /* AssistMobileTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssistMobileTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		397449211CA9725E00794FDA /* AssistMobileTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistMobileTestTests.swift; sourceTree = "<group>"; };
+		397449231CA9725E00794FDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		397449281CA9725E00794FDA /* AssistMobileTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssistMobileTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3974492C1CA9725E00794FDA /* AssistMobileTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistMobileTestUITests.swift; sourceTree = "<group>"; };
+		3974492E1CA9725E00794FDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		397449631CA973DD00794FDA /* AssistMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AssistMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		397449651CA973DD00794FDA /* AssistMobile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssistMobile.h; sourceTree = "<group>"; };
+		397449671CA973DD00794FDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3974496C1CA973DE00794FDA /* AssistMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssistMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		397449731CA973DE00794FDA /* AssistMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistMobileTests.swift; sourceTree = "<group>"; };
+		397449751CA973DE00794FDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		397449821CA9752A00794FDA /* AssistPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistPay.swift; sourceTree = "<group>"; };
+		397449841CA9758000794FDA /* PayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayController.swift; sourceTree = "<group>"; };
+		397449861CA975C500794FDA /* ResultService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultService.swift; sourceTree = "<group>"; };
+		397449881CA975F400794FDA /* SoapRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapRequest.swift; sourceTree = "<group>"; };
+		3974498A1CA9763E00794FDA /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		3974498C1CA9769000794FDA /* RequestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
+		3974498E1CA9771900794FDA /* DeviceLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceLocation.swift; sourceTree = "<group>"; };
+		397449901CA9774E00794FDA /* Registration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		397449921CA9778100794FDA /* PayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayData.swift; sourceTree = "<group>"; };
+		397449951CA9789D00794FDA /* PayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayView.xib; sourceTree = "<group>"; };
+		397449971CA978EA00794FDA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		397449991CA9792700794FDA /* Signature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signature.swift; sourceTree = "<group>"; };
+		3974499B1CA9797900794FDA /* AssistMobileTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AssistMobileTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		3974499C1CA9802A00794FDA /* SignatureKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureKeyViewController.swift; sourceTree = "<group>"; };
+		3974499E1CA980E900794FDA /* SettingsControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsControllerViewController.swift; sourceTree = "<group>"; };
+		397449A01CA9811D00794FDA /* KeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
+		397449A21CA9814900794FDA /* CustomerSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerSettingsViewController.swift; sourceTree = "<group>"; };
+		397449A41CA9818A00794FDA /* CustomerExtraSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerExtraSettingsViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		397449061CA9725E00794FDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				397449781CA973DE00794FDA /* AssistMobile.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3974491A1CA9725E00794FDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		397449251CA9725E00794FDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3974495F1CA973DD00794FDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		397449691CA973DE00794FDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3974496D1CA973DE00794FDA /* AssistMobile.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		397449001CA9725E00794FDA = {
+			isa = PBXGroup;
+			children = (
+				3974490B1CA9725E00794FDA /* AssistMobileTest */,
+				397449201CA9725E00794FDA /* AssistMobileTestTests */,
+				3974492B1CA9725E00794FDA /* AssistMobileTestUITests */,
+				397449641CA973DD00794FDA /* AssistMobile */,
+				397449721CA973DE00794FDA /* AssistMobileTests */,
+				3974490A1CA9725E00794FDA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3974490A1CA9725E00794FDA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				397449091CA9725E00794FDA /* AssistMobileTest.app */,
+				3974491D1CA9725E00794FDA /* AssistMobileTestTests.xctest */,
+				397449281CA9725E00794FDA /* AssistMobileTestUITests.xctest */,
+				397449631CA973DD00794FDA /* AssistMobile.framework */,
+				3974496C1CA973DE00794FDA /* AssistMobileTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3974490B1CA9725E00794FDA /* AssistMobileTest */ = {
+			isa = PBXGroup;
+			children = (
+				3974490E1CA9725E00794FDA /* ViewController.swift */,
+				397449101CA9725E00794FDA /* Main.storyboard */,
+				397449971CA978EA00794FDA /* Settings.swift */,
+				397449991CA9792700794FDA /* Signature.swift */,
+				3974499C1CA9802A00794FDA /* SignatureKeyViewController.swift */,
+				3974499E1CA980E900794FDA /* SettingsControllerViewController.swift */,
+				397449A01CA9811D00794FDA /* KeyView.swift */,
+				397449A21CA9814900794FDA /* CustomerSettingsViewController.swift */,
+				397449A41CA9818A00794FDA /* CustomerExtraSettingsViewController.swift */,
+				397449811CA9745F00794FDA /* Supporting Files */,
+			);
+			path = AssistMobileTest;
+			sourceTree = "<group>";
+		};
+		397449201CA9725E00794FDA /* AssistMobileTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				397449211CA9725E00794FDA /* AssistMobileTestTests.swift */,
+				397449231CA9725E00794FDA /* Info.plist */,
+			);
+			path = AssistMobileTestTests;
+			sourceTree = "<group>";
+		};
+		3974492B1CA9725E00794FDA /* AssistMobileTestUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3974492C1CA9725E00794FDA /* AssistMobileTestUITests.swift */,
+				3974492E1CA9725E00794FDA /* Info.plist */,
+			);
+			path = AssistMobileTestUITests;
+			sourceTree = "<group>";
+		};
+		397449641CA973DD00794FDA /* AssistMobile */ = {
+			isa = PBXGroup;
+			children = (
+				397449821CA9752A00794FDA /* AssistPay.swift */,
+				397449841CA9758000794FDA /* PayController.swift */,
+				397449861CA975C500794FDA /* ResultService.swift */,
+				397449881CA975F400794FDA /* SoapRequest.swift */,
+				3974498A1CA9763E00794FDA /* Configuration.swift */,
+				3974498C1CA9769000794FDA /* RequestData.swift */,
+				3974498E1CA9771900794FDA /* DeviceLocation.swift */,
+				397449901CA9774E00794FDA /* Registration.swift */,
+				397449921CA9778100794FDA /* PayData.swift */,
+				397449951CA9789D00794FDA /* PayView.xib */,
+				397449941CA977F700794FDA /* Supporting Files */,
+			);
+			path = AssistMobile;
+			sourceTree = "<group>";
+		};
+		397449721CA973DE00794FDA /* AssistMobileTests */ = {
+			isa = PBXGroup;
+			children = (
+				397449731CA973DE00794FDA /* AssistMobileTests.swift */,
+				397449751CA973DE00794FDA /* Info.plist */,
+			);
+			path = AssistMobileTests;
+			sourceTree = "<group>";
+		};
+		397449811CA9745F00794FDA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				397449151CA9725E00794FDA /* LaunchScreen.storyboard */,
+				397449181CA9725E00794FDA /* Info.plist */,
+				397449131CA9725E00794FDA /* Assets.xcassets */,
+				3974490C1CA9725E00794FDA /* AppDelegate.swift */,
+				3974499B1CA9797900794FDA /* AssistMobileTest-Bridging-Header.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		397449941CA977F700794FDA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				397449651CA973DD00794FDA /* AssistMobile.h */,
+				397449671CA973DD00794FDA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		397449601CA973DD00794FDA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				397449661CA973DD00794FDA /* AssistMobile.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		397449081CA9725E00794FDA /* AssistMobileTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 397449311CA9725E00794FDA /* Build configuration list for PBXNativeTarget "AssistMobileTest" */;
+			buildPhases = (
+				397449051CA9725E00794FDA /* Sources */,
+				397449061CA9725E00794FDA /* Frameworks */,
+				397449071CA9725E00794FDA /* Resources */,
+				3974497D1CA973DE00794FDA /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				397449771CA973DE00794FDA /* PBXTargetDependency */,
+			);
+			name = AssistMobileTest;
+			productName = AssistMobileTest;
+			productReference = 397449091CA9725E00794FDA /* AssistMobileTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3974491C1CA9725E00794FDA /* AssistMobileTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 397449341CA9725E00794FDA /* Build configuration list for PBXNativeTarget "AssistMobileTestTests" */;
+			buildPhases = (
+				397449191CA9725E00794FDA /* Sources */,
+				3974491A1CA9725E00794FDA /* Frameworks */,
+				3974491B1CA9725E00794FDA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3974491F1CA9725E00794FDA /* PBXTargetDependency */,
+			);
+			name = AssistMobileTestTests;
+			productName = AssistMobileTestTests;
+			productReference = 3974491D1CA9725E00794FDA /* AssistMobileTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		397449271CA9725E00794FDA /* AssistMobileTestUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 397449371CA9725E00794FDA /* Build configuration list for PBXNativeTarget "AssistMobileTestUITests" */;
+			buildPhases = (
+				397449241CA9725E00794FDA /* Sources */,
+				397449251CA9725E00794FDA /* Frameworks */,
+				397449261CA9725E00794FDA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3974492A1CA9725E00794FDA /* PBXTargetDependency */,
+			);
+			name = AssistMobileTestUITests;
+			productName = AssistMobileTestUITests;
+			productReference = 397449281CA9725E00794FDA /* AssistMobileTestUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		397449621CA973DD00794FDA /* AssistMobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3974497A1CA973DE00794FDA /* Build configuration list for PBXNativeTarget "AssistMobile" */;
+			buildPhases = (
+				3974495E1CA973DD00794FDA /* Sources */,
+				3974495F1CA973DD00794FDA /* Frameworks */,
+				397449601CA973DD00794FDA /* Headers */,
+				397449611CA973DD00794FDA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AssistMobile;
+			productName = AssistMobile;
+			productReference = 397449631CA973DD00794FDA /* AssistMobile.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3974496B1CA973DE00794FDA /* AssistMobileTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3974497E1CA973DE00794FDA /* Build configuration list for PBXNativeTarget "AssistMobileTests" */;
+			buildPhases = (
+				397449681CA973DE00794FDA /* Sources */,
+				397449691CA973DE00794FDA /* Frameworks */,
+				3974496A1CA973DE00794FDA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3974496F1CA973DE00794FDA /* PBXTargetDependency */,
+				397449711CA973DE00794FDA /* PBXTargetDependency */,
+			);
+			name = AssistMobileTests;
+			productName = AssistMobileTests;
+			productReference = 3974496C1CA973DE00794FDA /* AssistMobileTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		397449011CA9725E00794FDA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Assist;
+				TargetAttributes = {
+					397449081CA9725E00794FDA = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					3974491C1CA9725E00794FDA = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 397449081CA9725E00794FDA;
+					};
+					397449271CA9725E00794FDA = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 397449081CA9725E00794FDA;
+					};
+					397449621CA973DD00794FDA = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					3974496B1CA973DE00794FDA = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 397449081CA9725E00794FDA;
+					};
+				};
+			};
+			buildConfigurationList = 397449041CA9725E00794FDA /* Build configuration list for PBXProject "AssistMobileTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 397449001CA9725E00794FDA;
+			productRefGroup = 3974490A1CA9725E00794FDA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				397449081CA9725E00794FDA /* AssistMobileTest */,
+				3974491C1CA9725E00794FDA /* AssistMobileTestTests */,
+				397449271CA9725E00794FDA /* AssistMobileTestUITests */,
+				397449621CA973DD00794FDA /* AssistMobile */,
+				3974496B1CA973DE00794FDA /* AssistMobileTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		397449071CA9725E00794FDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				397449171CA9725E00794FDA /* LaunchScreen.storyboard in Resources */,
+				397449141CA9725E00794FDA /* Assets.xcassets in Resources */,
+				397449121CA9725E00794FDA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3974491B1CA9725E00794FDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		397449261CA9725E00794FDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		397449611CA973DD00794FDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				397449961CA9789D00794FDA /* PayView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3974496A1CA973DE00794FDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		397449051CA9725E00794FDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3974499D1CA9802A00794FDA /* SignatureKeyViewController.swift in Sources */,
+				397449A31CA9814900794FDA /* CustomerSettingsViewController.swift in Sources */,
+				397449A51CA9818A00794FDA /* CustomerExtraSettingsViewController.swift in Sources */,
+				3974499F1CA980E900794FDA /* SettingsControllerViewController.swift in Sources */,
+				3974499A1CA9792700794FDA /* Signature.swift in Sources */,
+				397449A11CA9811D00794FDA /* KeyView.swift in Sources */,
+				397449981CA978EA00794FDA /* Settings.swift in Sources */,
+				3974490F1CA9725E00794FDA /* ViewController.swift in Sources */,
+				3974490D1CA9725E00794FDA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		397449191CA9725E00794FDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				397449221CA9725E00794FDA /* AssistMobileTestTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		397449241CA9725E00794FDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3974492D1CA9725E00794FDA /* AssistMobileTestUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3974495E1CA973DD00794FDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				397449911CA9774E00794FDA /* Registration.swift in Sources */,
+				3974498F1CA9771900794FDA /* DeviceLocation.swift in Sources */,
+				397449891CA975F400794FDA /* SoapRequest.swift in Sources */,
+				397449931CA9778100794FDA /* PayData.swift in Sources */,
+				3974498B1CA9763E00794FDA /* Configuration.swift in Sources */,
+				397449871CA975C500794FDA /* ResultService.swift in Sources */,
+				3974498D1CA9769000794FDA /* RequestData.swift in Sources */,
+				397449851CA9758000794FDA /* PayController.swift in Sources */,
+				397449831CA9752A00794FDA /* AssistPay.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		397449681CA973DE00794FDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				397449741CA973DE00794FDA /* AssistMobileTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3974491F1CA9725E00794FDA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 397449081CA9725E00794FDA /* AssistMobileTest */;
+			targetProxy = 3974491E1CA9725E00794FDA /* PBXContainerItemProxy */;
+		};
+		3974492A1CA9725E00794FDA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 397449081CA9725E00794FDA /* AssistMobileTest */;
+			targetProxy = 397449291CA9725E00794FDA /* PBXContainerItemProxy */;
+		};
+		3974496F1CA973DE00794FDA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 397449621CA973DD00794FDA /* AssistMobile */;
+			targetProxy = 3974496E1CA973DE00794FDA /* PBXContainerItemProxy */;
+		};
+		397449711CA973DE00794FDA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 397449081CA9725E00794FDA /* AssistMobileTest */;
+			targetProxy = 397449701CA973DE00794FDA /* PBXContainerItemProxy */;
+		};
+		397449771CA973DE00794FDA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 397449621CA973DD00794FDA /* AssistMobile */;
+			targetProxy = 397449761CA973DE00794FDA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		397449101CA9725E00794FDA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				397449111CA9725E00794FDA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		397449151CA9725E00794FDA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				397449161CA9725E00794FDA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3974492F1CA9725E00794FDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		397449301CA9725E00794FDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		397449321CA9725E00794FDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = AssistMobileTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.assist.AssistMobileTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AssistMobileTest/AssistMobileTest-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		397449331CA9725E00794FDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = AssistMobileTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.assist.AssistMobileTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AssistMobileTest/AssistMobileTest-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		397449351CA9725E00794FDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AssistMobileTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.assist.AssistMobileTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AssistMobileTest.app/AssistMobileTest";
+			};
+			name = Debug;
+		};
+		397449361CA9725E00794FDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AssistMobileTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.assist.AssistMobileTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AssistMobileTest.app/AssistMobileTest";
+			};
+			name = Release;
+		};
+		397449381CA9725E00794FDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AssistMobileTestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.assist.AssistMobileTestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = AssistMobileTest;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		397449391CA9725E00794FDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AssistMobileTestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.assist.AssistMobileTestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = AssistMobileTest;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+		3974497B1CA973DE00794FDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AssistMobile/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.assist.AssistMobile;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3974497C1CA973DE00794FDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AssistMobile/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.assist.AssistMobile;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3974497F1CA973DE00794FDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AssistMobileTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.assist.AssistMobileTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AssistMobileTest.app/AssistMobileTest";
+			};
+			name = Debug;
+		};
+		397449801CA973DE00794FDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = AssistMobileTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.assist.AssistMobileTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AssistMobileTest.app/AssistMobileTest";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		397449041CA9725E00794FDA /* Build configuration list for PBXProject "AssistMobileTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3974492F1CA9725E00794FDA /* Debug */,
+				397449301CA9725E00794FDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		397449311CA9725E00794FDA /* Build configuration list for PBXNativeTarget "AssistMobileTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				397449321CA9725E00794FDA /* Debug */,
+				397449331CA9725E00794FDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		397449341CA9725E00794FDA /* Build configuration list for PBXNativeTarget "AssistMobileTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				397449351CA9725E00794FDA /* Debug */,
+				397449361CA9725E00794FDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		397449371CA9725E00794FDA /* Build configuration list for PBXNativeTarget "AssistMobileTestUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				397449381CA9725E00794FDA /* Debug */,
+				397449391CA9725E00794FDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3974497A1CA973DE00794FDA /* Build configuration list for PBXNativeTarget "AssistMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3974497B1CA973DE00794FDA /* Debug */,
+				3974497C1CA973DE00794FDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3974497E1CA973DE00794FDA /* Build configuration list for PBXNativeTarget "AssistMobileTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3974497F1CA973DE00794FDA /* Debug */,
+				397449801CA973DE00794FDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 397449011CA9725E00794FDA /* Project object */;
+}
