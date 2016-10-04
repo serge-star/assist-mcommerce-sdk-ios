@@ -19,7 +19,7 @@ public enum Currency: String {
     case RUB = "RUB"
     case USD = "USD"
     case EUR = "EUR"
-    case BYR = "BYR"
+    case BYN = "BYN"
     case UAH = "UAH"
 }
 
