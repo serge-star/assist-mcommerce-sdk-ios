@@ -8,31 +8,31 @@
 
 import Foundation
 
-public class RequestData: NSObject {
+open class RequestData: NSObject {
     func buildRequestString() -> String {
         return ""  // it must be overriden
     }
     
-    func addHeaderProperties(request: NSMutableURLRequest) {
+    func addHeaderProperties(_ request: NSMutableURLRequest) {
         // override if want add properties
     }
     
-    func buldRequest(url: NSURL) -> NSURLRequest {
+    func buldRequest(_ url: URL) -> URLRequest {
         let contents = buildRequestString()
         let body = NSMutableData()
-        body.appendData(contents.dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.append(contents.data(using: String.Encoding.utf8)!)
         
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
+        let request = NSMutableURLRequest(url: url)
+        request.httpMethod = "POST"
         
         addHeaderProperties(request)
         
         let contentLength = "\(body.length)"
         request.setValue(contentLength, forHTTPHeaderField: "Content-Length")
-        request.HTTPBody = body
+        request.httpBody = body as Data
         
         print("request body \(body), contents \(contents)")
         
-        return request
+        return request as URLRequest
     }
 }

@@ -19,18 +19,18 @@ public enum Currency: String {
     case RUB = "RUB"
     case USD = "USD"
     case EUR = "EUR"
-    case BYN = "BYN"
+    case BYR = "BYR"
     case UAH = "UAH"
 }
 
 @objc
-public class PayData: RequestData {
+open class PayData: RequestData {
     
     public override init() {
         fieldValues[Fields.MobileDevice] = "6"
     }
     
-    private enum Fields: String {
+    fileprivate enum Fields: String {
         case MerchantId = "Merchant_ID"
         case CustomerId = "CustomerNumber"
         case OrderNumber = "OrderNumber"
@@ -76,119 +76,119 @@ public class PayData: RequestData {
         case OsLanguage = "OsLanguage"
     }
     
-    private var fieldValues = [Fields : String]()
+    fileprivate var fieldValues = [Fields : String]()
     
-    public var merchantId: String? {
+    open var merchantId: String? {
         get { return fieldValues[Fields.MerchantId] }
         set { fieldValues[Fields.MerchantId] = newValue }
     }
     
-    public var customerId: String? {
+    open var customerId: String? {
         get { return fieldValues[Fields.CustomerId] }
         set { fieldValues[Fields.CustomerId] = newValue }
     }
     
-    public var orderNumber: String? {
+    open var orderNumber: String? {
         get { return fieldValues[Fields.OrderNumber] }
         set { fieldValues[Fields.OrderNumber] = newValue }
     }
     
-    public var languageStr: String? {
+    open var languageStr: String? {
         get { return fieldValues[Fields.Language] }
         set { fieldValues[Fields.Language] = newValue }
     }
     
-    public var language: Language? {
+    open var language: Language? {
         get { return Language(rawValue: languageStr ?? "") }
         set { languageStr = newValue?.rawValue }
     }
     
-    public var orderAmount: String? {
+    open var orderAmount: String? {
         get { return fieldValues[Fields.OrderAmount] }
         set { fieldValues[Fields.OrderAmount] = newValue }
     }
     
-    public var orderComment: String? {
+    open var orderComment: String? {
         get { return fieldValues[Fields.OrderComment] }
         set { fieldValues[Fields.OrderComment] = newValue }
     }
     
-    public var orderCurrencyStr: String? {
+    open var orderCurrencyStr: String? {
         get { return fieldValues[Fields.OrderCurrency] }
         set { fieldValues[Fields.OrderCurrency] = newValue }
     }
     
-    public var orderCurrency: Currency? {
+    open var orderCurrency: Currency? {
         get { return Currency(rawValue: orderCurrencyStr ?? "") }
         set { orderCurrencyStr = newValue?.rawValue }
     }
     
-    public var lastname: String? {
+    open var lastname: String? {
         get { return fieldValues[Fields.Lastname] }
         set { fieldValues[Fields.Lastname] = newValue }
     }
     
-    public var firstname: String? {
+    open var firstname: String? {
         get { return fieldValues[Fields.Firstname] }
         set { fieldValues[Fields.Firstname] = newValue }
     }
     
-    public var middlename: String? {
+    open var middlename: String? {
         get { return fieldValues[Fields.Middlename] }
         set { fieldValues[Fields.Middlename] = newValue }
     }
     
-    public var email: String? {
+    open var email: String? {
         get { return fieldValues[Fields.Email] }
         set { fieldValues[Fields.Email] = newValue }
     }
     
-    public var address: String? {
+    open var address: String? {
         get { return fieldValues[Fields.Address] }
         set { fieldValues[Fields.Address] = newValue }
     }
     
-    public var homePhone: String? {
+    open var homePhone: String? {
         get { return fieldValues[Fields.HomePhone] }
         set { fieldValues[Fields.HomePhone] = newValue }
     }
     
-    public var workPhone: String? {
+    open var workPhone: String? {
         get { return fieldValues[Fields.WorkPhone] }
         set { fieldValues[Fields.WorkPhone] = newValue }
     }
     
-    public var mobilePhone: String? {
+    open var mobilePhone: String? {
         get { return fieldValues[Fields.MobilePhone] }
         set { fieldValues[Fields.MobilePhone] = newValue }
     }
     
-    public var fax: String? {
+    open var fax: String? {
         get { return fieldValues[Fields.Fax] }
         set { fieldValues[Fields.Fax] = newValue }
     }
     
-    public var country: String? {
+    open var country: String? {
         get { return fieldValues[Fields.Country] }
         set { fieldValues[Fields.Country] = newValue }
     }
     
-    public var state: String? {
+    open var state: String? {
         get { return fieldValues[Fields.State] }
         set { fieldValues[Fields.State] = newValue }
     }
     
-    public var city: String? {
+    open var city: String? {
         get { return fieldValues[Fields.City] }
         set { fieldValues[Fields.City] = newValue }
     }
     
-    public var zip: String? {
+    open var zip: String? {
         get { return fieldValues[Fields.Zip] }
         set { fieldValues[Fields.Zip] = newValue }
     }
     
-    public var signature: String? {
+    open var signature: String? {
         get { return fieldValues[Fields.Signature] }
         set { fieldValues[Fields.Signature] = newValue }
     }
@@ -233,14 +233,14 @@ public class PayData: RequestData {
         set { fieldValues[Fields.OsLanguage] = newValue }
     }
     
-    public var date: NSDate?
+    open var date: Date?
     
     override func buildRequestString() -> String {
         var req = String()
         for (key, value) in fieldValues {
             req += "\(key.rawValue)=\(value)&"
         }
-        req.removeAtIndex(req.endIndex.predecessor())
+        req.remove(at: req.characters.index(before: req.endIndex))
         return req
     }
     

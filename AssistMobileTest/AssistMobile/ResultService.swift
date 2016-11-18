@@ -77,8 +77,8 @@ class ResultRequest: SoapRequest {
 }
 
 protocol ResultServiceDelegate {
-    func result(bill: String, state: String, message: String?)
-    func resultError(faultcode: String?, faultstring: String?)
+    func result(_ bill: String, state: String, message: String?)
+    func resultError(_ faultcode: String?, faultstring: String?)
 }
 
 class ResultService: SoapService {
@@ -86,8 +86,8 @@ class ResultService: SoapService {
     let orderstate = ".soapenv:Envelope.soapenv:Body.ws:orderresultResponse.orderresult.order.orderstate"
     let message = ".soapenv:Envelope.soapenv:Body.ws:orderresultResponse.orderresult.order.operation.customermessage"
     
-    private var requestData: ResultRequest
-    private var delegate: ResultServiceDelegate
+    fileprivate var requestData: ResultRequest
+    fileprivate var delegate: ResultServiceDelegate
     
     init(requestData: ResultRequest, delegate: ResultServiceDelegate) {
         self.requestData = requestData
@@ -102,8 +102,8 @@ class ResultService: SoapService {
         return AssistLinks.currentHost + AssistLinks.ResultService
     }
     
-    override func finish(values: [String : String]) {
-        if let bill = values[billnumber], state = values[orderstate] {
+    override func finish(_ values: [String : String]) {
+        if let bill = values[billnumber], let state = values[orderstate] {
             delegate.result(bill, state: state, message: values[message])
         } else {
             delegate.resultError(values[faultcode], faultstring: values[faultstring])

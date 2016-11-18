@@ -10,13 +10,13 @@ import Foundation
 import CoreLocation
 
 protocol DeviceLocationDelegate: class {
-    func locationError(text: String)
-    func location(latitude: String, longitude: String)
+    func locationError(_ text: String)
+    func location(_ latitude: String, longitude: String)
 }
 
 class DeviceLocation : NSObject, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
-    private weak var delegate: DeviceLocationDelegate!
+    fileprivate weak var delegate: DeviceLocationDelegate!
     
     init(delegate: DeviceLocationDelegate) {
         self.delegate = delegate
@@ -35,20 +35,13 @@ class DeviceLocation : NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("location error")
         delegate.locationError(error.localizedDescription)
         locationManager.stopUpdatingLocation()
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-        print("location updateToLocation")
-        locationManager.stopUpdatingLocation()
-        let coord = newLocation.coordinate
-        delegate.location("\(coord.latitude)", longitude: "\(coord.longitude)")
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         print("location uodateLocations")
         locationManager.stopUpdatingLocation()
         let locationArray = locations as NSArray
@@ -57,9 +50,9 @@ class DeviceLocation : NSObject, CLLocationManagerDelegate {
         delegate.location("\(coord.latitude)", longitude: "\(coord.longitude)")
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("location status")
-        if status == .NotDetermined || status == .Restricted || status == .Denied {
+        if status == .notDetermined || status == .restricted || status == .denied {
             delegate.locationError("location denied")
         }
     }

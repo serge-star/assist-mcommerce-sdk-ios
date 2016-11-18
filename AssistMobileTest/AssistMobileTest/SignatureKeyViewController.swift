@@ -10,8 +10,8 @@ import UIKit
 
 class SignatureKeyViewController: UIViewController {
     
-    private var privateKeyData: NSData?
-    private var publicKeyData: NSData?
+    fileprivate var privateKeyData: Data?
+    fileprivate var publicKeyData: Data?
     
     @IBOutlet weak var privateKey: KeyView! {
         didSet {
@@ -19,24 +19,24 @@ class SignatureKeyViewController: UIViewController {
         }
     }
     
-    @IBAction func copyToClipboard(sender: UIButton) {
+    @IBAction func copyToClipboard(_ sender: UIButton) {
         if let data = publicKeyData {
-            UIPasteboard.generalPasteboard().string = Signature.base64Encode(data)
+            UIPasteboard.general.string = Signature.base64Encode(data)
         }
     }
     
-    @IBAction func pasteFromCliboard(sender: UIButton) {
+    @IBAction func pasteFromCliboard(_ sender: UIButton) {
         print("paste")
-        if let string = UIPasteboard.generalPasteboard().string {
+        if let string = UIPasteboard.general.string {
             print("string: \(string)")
-            if let data = NSData(base64EncodedString: string, options: NSDataBase64DecodingOptions(rawValue: 1)) {
+            if let data = Data(base64Encoded: string, options: NSData.Base64DecodingOptions(rawValue: 1)) {
                 Settings.privateKey = data
                 updateView()
             }
         }
     }
     
-    @IBAction func generateKeys(sender: UIButton) {
+    @IBAction func generateKeys(_ sender: UIButton) {
         let keys = Signature.generateKeys()
         if let key = keys.privateKey {
             if let data = Signature.secKeyToNSData(key) {
@@ -52,13 +52,13 @@ class SignatureKeyViewController: UIViewController {
         }
     }
     
-    @IBAction func close(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func close(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
     func updateView() {
         if let key = Settings.privateKey {
-            privateKeyData = key
+            privateKeyData = key as Data
             privateKey.key = key
             
             print("key is \(key)")

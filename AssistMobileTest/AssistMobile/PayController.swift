@@ -8,7 +8,13 @@
 
 import UIKit
 
-class PayController: UIViewController, UIWebViewDelegate, NSURLConnectionDataDelegate, RegistrationDelegate, DeviceLocationDelegate, ResultServiceDelegate {
+extension NSURLRequest {
+    static func allowsAnyHTTPSCertificate(forHost host: String) -> Bool {
+        return host == "payments.t.paysecure.ru" || host == "payments.d.paysecure.ru"
+    }
+}
+
+class PayController: UIViewController, UIWebViewDelegate, RegistrationDelegate, DeviceLocationDelegate, ResultServiceDelegate {
     
     
     @IBOutlet weak var webView: UIWebView!
@@ -18,7 +24,7 @@ class PayController: UIViewController, UIWebViewDelegate, NSURLConnectionDataDel
     var locationUpdated = false
     var registrationCompleted = false
     var urlConnection: NSURLConnection?
-    var badRequest: NSURLRequest?
+    var badRequest: URLRequest?
     var data: PayData?
     var deviceLocation: DeviceLocation?
     weak var payDelegate: AssistPayDelegate?
@@ -41,7 +47,7 @@ class PayController: UIViewController, UIWebViewDelegate, NSURLConnectionDataDel
         }
     }
     
-    func collectDeviceData(data: PayData) {
+    func collectDeviceData(_ data: PayData) {
         data.deviceUniqueId = Configuration.uuid
         data.device = Configuration.model
         data.applicationName = Configuration.appName
@@ -63,9 +69,9 @@ class PayController: UIViewController, UIWebViewDelegate, NSURLConnectionDataDel
         reg.start()
     }
     
-    func startPayment(params: PayData) {
+    func startPayment(_ params: PayData) {
         print("start payment")
-        let request = params.buldRequest(NSURL(string: AssistLinks.currentHost + AssistLinks.PayPagesService)!)
+        let request = params.buldRequest(URL(string: AssistLinks.currentHost + AssistLinks.PayPagesService)!)
         
         webView.delegate = self
         webView.loadRequest(request)
@@ -78,72 +84,33 @@ class PayController: UIViewController, UIWebViewDelegate, NSURLConnectionDataDel
         }
     }
     
-    func webViewDidFinishLoad(webView: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         wait.stopAnimating()
     }
     
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
-        request.URL?.description
         print("WebView delegate");
         
-        if let url = request.URL {
+        if let url = request.url {
             print("URL: \(url.path)")
             
-            if let path = url.path {
-                if path.hasSuffix("result.cfm") {
-                    webView.stopLoading()
-                    getResult()
-                } else if path.hasSuffix("body.cfm") {
-                    webView.stopLoading()
-                    repeated = true
-                    getResult()
-                }
+            let path = url.path
+            if path.hasSuffix("result.cfm") {
+                webView.stopLoading()
+                getResult()
+            } else if path.hasSuffix("body.cfm") {
+                webView.stopLoading()
+                repeated = true
+                getResult()
             }
-        }
-        
-        if !authenticated {
-            badRequest = request
-            urlConnection = NSURLConnection(request: NSURLRequest(URL: request.URL!), delegate: self)
-            urlConnection?.start()
-            
-            return false
+    
         }
         
         return true
     }
     
-    func connection(connection: NSURLConnection, willSendRequestForAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
-        
-        print("connection willSend")
-        
-        let method = challenge.protectionSpace.authenticationMethod
-        if method == NSURLAuthenticationMethodServerTrust {
-            print("trusted host")
-            if let trust = challenge.protectionSpace.serverTrust {
-                challenge.sender?.useCredential(NSURLCredential(forTrust: trust), forAuthenticationChallenge: challenge)
-            }
-        } else {
-            print("not trusted host")
-        }
-        
-        challenge.sender?.continueWithoutCredentialForAuthenticationChallenge(challenge)
-    }
-    
-    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
-        print("connection didReceiveResponse")
-        authenticated = true
-        connection.cancel()
-        webView.loadRequest(badRequest!)
-    }
-    
-    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-        print("connection didFailWithError description: \(error.description)")
-        repeated = true
-        getResult()
-    }
-    
-    func registration(id: String) {
+    func registration(_ id: String) {
         print("registration: get id")
         if let params = data {
             params.registrationId = id
@@ -153,12 +120,12 @@ class PayController: UIViewController, UIWebViewDelegate, NSURLConnectionDataDel
         }
     }
     
-    func registration(faultcode: String?, faultstring: String?) {
+    func registration(_ faultcode: String?, faultstring: String?) {
         print("registration: error faultcode=\(faultcode), faultstring=\(faultstring)")
         resultError(faultcode, faultstring: faultstring)
     }
     
-    func location(latitude: String, longitude: String) {
+    func location(_ latitude: String, longitude: String) {
         print("location updated")
         if !locationUpdated {
             data!.latitude = latitude
@@ -168,7 +135,7 @@ class PayController: UIViewController, UIWebViewDelegate, NSURLConnectionDataDel
         }
     }
     
-    func locationError(text: String) {
+    func locationError(_ text: String) {
         if !locationUpdated {
             print("location error: \(text)")
             locationUpdated = true
@@ -183,19 +150,19 @@ class PayController: UIViewController, UIWebViewDelegate, NSURLConnectionDataDel
             request.regId = Configuration.regId
             request.orderNo = payData.orderNumber
             request.merchantId = payData.merchantId
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd.MM.yyyy"
-            let date = payData.date ?? NSDate()
-            request.date = dateFormatter.stringFromDate(date)
+            let date = payData.date ?? Date()
+            request.date = dateFormatter.string(from: date)
             let service = ResultService(requestData: request, delegate: self)
             service.start()
         }
     }
     
-    func result(bill: String, state: String, message: String?) {
+    func result(_ bill: String, state: String, message: String?) {
         print("success: bill=\(bill), state=\(state), message=\(message)")
-        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
-            self.dismissViewControllerAnimated(true, completion: nil)
+        DispatchQueue.main.async { [unowned self] in
+            self.dismiss(animated: true, completion: nil)
             
             if let delegate = self.payDelegate {
                 var status = PaymentStatus(rawValue: state) ?? .Unknown
@@ -208,15 +175,15 @@ class PayController: UIViewController, UIWebViewDelegate, NSURLConnectionDataDel
         }
     }
     
-    func resultError(faultcode: String?, faultstring: String?) {
+    func resultError(_ faultcode: String?, faultstring: String?) {
         
-        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+        DispatchQueue.main.async { [unowned self] in
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             
             if let delegate = self.payDelegate {
                 var errorMessage = "Error:"
-                if let code = faultcode, string = faultstring {
+                if let code = faultcode, let string = faultstring {
                     errorMessage += " faultcode = \(code), faultstring = \(string)";
                 } else {
                     errorMessage += " unknown"

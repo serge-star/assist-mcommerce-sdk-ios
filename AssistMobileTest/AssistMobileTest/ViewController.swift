@@ -45,7 +45,7 @@ class ViewController: UIViewController, AssistPayDelegate, UIPickerViewDataSourc
     var data = PayData()
     var currencyes = [Currency.RUB.rawValue, Currency.USD.rawValue, Currency.EUR.rawValue, Currency.BYR.rawValue, Currency.UAH.rawValue]
     
-    @IBAction func startPay(sender: UIButton) {
+    @IBAction func startPay(_ sender: UIButton) {
         
         data.merchantId = merchantId.text
         data.orderNumber = orderNumber.text
@@ -84,7 +84,7 @@ class ViewController: UIViewController, AssistPayDelegate, UIPickerViewDataSourc
         pay.start(self, withData: data)
     }
     
-    @IBAction func getResult(sender: UIButton) {
+    @IBAction func getResult(_ sender: UIButton) {
         data.merchantId = merchantId.text
         data.orderNumber = orderNumber.text
         data.orderAmount = orderAmount.text
@@ -129,39 +129,39 @@ class ViewController: UIViewController, AssistPayDelegate, UIPickerViewDataSourc
         super.viewDidLoad()
     }
     
-    func payFinished(bill: String, status: String, message: String?) {
+    func payFinished(_ bill: String, status: String, message: String?) {
         let msg = message ?? ""
         result.text = "Finished: bill = \(bill), status = \(status), message = \(msg)"
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return currencyes.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return currencyes[row]
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         orderCurrency.text = currencyes[row]
         orderCurrency.resignFirstResponder()
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
     func calculateSignature() -> String? {
-        if let merchantId = data.merchantId, orderNumber = data.orderNumber, orderAmount = data.orderAmount, orderCurrency = data.orderCurrency {
+        if let merchantId = data.merchantId, let orderNumber = data.orderNumber, let orderAmount = data.orderAmount, let orderCurrency = data.orderCurrency {
             let signStr = "\(merchantId);\(orderNumber);\(orderAmount);\(orderCurrency.rawValue)"
             
             print("string to sign is \(signStr)")

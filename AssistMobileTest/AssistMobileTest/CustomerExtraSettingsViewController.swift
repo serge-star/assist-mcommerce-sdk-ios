@@ -58,7 +58,7 @@ class CustomerExtraSettingsViewController: UIViewController {
         }
     }
     
-    @IBAction func close(sender: UIButton) {
+    @IBAction func close(_ sender: UIButton) {
         Settings.address = address.text
         Settings.homePhone = homePhone.text
         Settings.workPhone = workPhone.text
@@ -68,15 +68,15 @@ class CustomerExtraSettingsViewController: UIViewController {
         Settings.city = city.text
         Settings.zip = zip.text
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
 }
