@@ -10,19 +10,19 @@ import UIKit
 
 class KeyView: UIView {
     
-    var key: NSData? {
+    var key: Data? {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         if let data = key {
             let string = Signature.base64Encode(data)
             
             print("string is \(string)")
             // set the text color to dark gray
-            let fieldColor: UIColor = UIColor.darkGrayColor()
+            let fieldColor: UIColor = UIColor.darkGray
             
             // set the font to Helvetica Neue 18
             let fieldFont = UIFont(name: "Helvetica Neue", size: 8)
@@ -39,9 +39,9 @@ class KeyView: UIView {
                 NSParagraphStyleAttributeName: paraStyle,
                 NSObliquenessAttributeName: skew,
                 NSFontAttributeName: fieldFont!
-            ]
+            ] as [String : Any]
             
-            string.drawInRect(rect, withAttributes: attributes)
+            string.draw(in: rect, withAttributes: attributes)
         }
     }
     

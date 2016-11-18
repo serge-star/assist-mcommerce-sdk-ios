@@ -25,26 +25,26 @@ public enum PaymentStatus: String
 
 @objc
 public protocol AssistPayDelegate: class {
-    func payFinished(bill: String, status: String, message: String?)
+    func payFinished(_ bill: String, status: String, message: String?)
 }
 
 @objc
-public class AssistPay: NSObject {
+open class AssistPay: NSObject {
     
-    private var pay: PayController
+    fileprivate var pay: PayController
     
     public init(delegate: AssistPayDelegate) {
-        let bundle = NSBundle(identifier: "ru.assist.AssistMobile")
+        let bundle = Bundle(identifier: "ru.assist.AssistMobile")
         pay = PayController(nibName: "PayView", bundle: bundle)
         pay.payDelegate = delegate
     }
     
-    public func start(controller: UIViewController, withData: PayData) {
+    open func start(_ controller: UIViewController, withData: PayData) {
         pay.payData = withData
-        controller.presentViewController(pay, animated: true, completion: nil)
+        controller.present(pay, animated: true, completion: nil)
     }
     
-    public func getResult(withData: PayData) {
+    open func getResult(_ withData: PayData) {
         pay.payData = withData
         pay.getResult()
     }

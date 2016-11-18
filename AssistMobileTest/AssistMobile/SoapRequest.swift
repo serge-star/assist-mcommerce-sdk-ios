@@ -36,7 +36,7 @@ class SoapRequest: RequestData {
         return request
     }
     
-    override func addHeaderProperties(request: NSMutableURLRequest) {
+    override func addHeaderProperties(_ request: NSMutableURLRequest) {
         request.setValue("text/xml", forHTTPHeaderField: "Content-Type")
         request.setValue("UTF-8", forHTTPHeaderField: "Content-Encoding")
         request.setValue(soapAction, forHTTPHeaderField: "SOAPAction")
@@ -44,14 +44,14 @@ class SoapRequest: RequestData {
     
 }
 
-class SoapService: NSObject, NSURLConnectionDataDelegate, NSXMLParserDelegate {
+class SoapService: NSObject, NSURLConnectionDataDelegate, XMLParserDelegate, URLSessionDelegate {
     let faultcode = ".soapenv:Envelope.soapenv:Body.soapenv:Fault.faultcode"
     let faultstring = ".soapenv:Envelope.soapenv:Body.soapenv:Fault.faultstring"
     
-    private var responseData = NSMutableData()
-    private var currentElement = String()
-    private var values = [String:String]()
-    private var names = [String]()
+    fileprivate var responseData = NSMutableData()
+    fileprivate var currentElement = String()
+    fileprivate var values = [String:String]()
+    fileprivate var names = [String]()
     
     func getUrl() -> String {
         return String() // must be overriden
@@ -62,84 +62,120 @@ class SoapService: NSObject, NSURLConnectionDataDelegate, NSXMLParserDelegate {
         values = [String:String]()
     }
     
-    func run(request: SoapRequest) {
-        let requestData = request.buldRequest(NSURL(string: getUrl())!)
+    func run(_ request: SoapRequest) {
+        let requestData = request.buldRequest(URL(string: getUrl())!)
         
-        if let connect = NSURLConnection(request: requestData, delegate: self) {
+        let sessionConfiguration = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfiguration, delegate: self, delegateQueue: nil)
+        let task = session.dataTask(with: requestData) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+            
+            let parser = XMLParser(data: data as Data)
+            parser.delegate = self
+            parser.parse()
+            parser.shouldResolveExternalEntities = true
+        }
+        
+        task.resume()
+        
+/*        if let connect = NSURLConnection(request: requestData, delegate: self) {
             clean()
             connect.start()
         }
-    }
+*/    }
     
     func getElementName() -> String {
         return names.reduce("") {$0 + "." + $1}
     }
     
-    func connection(connection: NSURLConnection, willSendRequestForAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
+    func connection(_ connection: NSURLConnection, willSendRequestFor challenge: URLAuthenticationChallenge) {
         print("Connection: will send auth")
         
         let method = challenge.protectionSpace.authenticationMethod
         if method == NSURLAuthenticationMethodServerTrust {
             print("trusted host")
             if let trust = challenge.protectionSpace.serverTrust {
-                challenge.sender?.useCredential(NSURLCredential(forTrust: trust), forAuthenticationChallenge: challenge)
+                challenge.sender?.use(URLCredential(trust: trust), for: challenge)
             }
         } else {
             print("not trusted host")
         }
         
-        challenge.sender?.continueWithoutCredentialForAuthenticationChallenge(challenge)
+        challenge.sender?.continueWithoutCredential(for: challenge)
     }
     
-    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
+    func connection(_ connection: NSURLConnection, didReceive response: URLResponse) {
         print("Connection: response loaded \(response)")
         responseData.length = 0
     }
     
-    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
+    func connection(_ connection: NSURLConnection, didReceive data: Data) {
         print("Connection: data received \(data)")
-        responseData.appendData(data)
+        responseData.append(data)
     }
     
-    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-        values[faultcode] = "\(error.code)"
+    func connection(_ connection: NSURLConnection, didFailWithError error: Error) {
+        values[faultcode] = "500"
         values[faultstring] = error.localizedDescription
         
         finish(values)
     }
     
-    func connectionDidFinishLoading(connection: NSURLConnection) {
+    func connectionDidFinishLoading(_ connection: NSURLConnection) {
         print("Connection: finish loading")
         
-        let parser = NSXMLParser(data: responseData)
+        let parser = XMLParser(data: responseData as Data)
         parser.delegate = self
         parser.parse()
         parser.shouldResolveExternalEntities = true
     }
     
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
+    }
+    
+    func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
+        print("didBecomeInvalidWithError: \(error)")
+    }
+    
+    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+        print("URLSessionDidFinishEventsForBackgroundURLSession: \(session)")
+    }
+    
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         names.append(elementName)
         currentElement = getElementName()
         print("Parser: start element \(currentElement)")
     }
     
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
         print("Parser: found characters \(string)")
         values[currentElement] = string
     }
     
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         print("Parser: end element \(currentElement)")
         names.removeLast()
         currentElement = getElementName()
     }
     
-    func parserDidEndDocument(parser: NSXMLParser) {
+    func parserDidEndDocument(_ parser: XMLParser) {
         print("Parser: end document")
         finish(values)
     }
     
-    func finish(values: [String:String]) {
+    func finish(_ values: [String:String]) {
         // process response data
     }
 }

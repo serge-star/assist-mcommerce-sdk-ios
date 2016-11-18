@@ -10,21 +10,21 @@ import Foundation
 
 class Settings {
     
-    static let defaults = NSUserDefaults.standardUserDefaults()
+    static let defaults = UserDefaults.standard
     
     static var useOneClick: Bool {
         get {
-        return defaults.boolForKey("OneClick")
+        return defaults.bool(forKey: "OneClick")
         }
         
         set {
-            defaults.setBool(newValue, forKey: "OneClick")
+            defaults.set(newValue, forKey: "OneClick")
         }
     }
     
     static var customerId: String? {
         get {
-        return defaults.stringForKey("CustomerId")
+        return defaults.string(forKey: "CustomerId")
         }
         
         set {
@@ -34,7 +34,7 @@ class Settings {
     
     static var langauge: String? {
         get {
-        return defaults.stringForKey("Language")
+        return defaults.string(forKey: "Language")
         }
         
         set {
@@ -44,17 +44,17 @@ class Settings {
     
     static var useSignature: Bool {
         get {
-        return defaults.boolForKey("Signature")
+        return defaults.bool(forKey: "Signature")
         }
         
         set {
-            defaults.setBool(newValue, forKey: "Signature")
+            defaults.set(newValue, forKey: "Signature")
         }
     }
     
     static var host: String? {
         get {
-        return defaults.stringForKey("Host")
+        return defaults.string(forKey: "Host")
         }
         
         set {
@@ -62,9 +62,9 @@ class Settings {
         }
     }
     
-    static var privateKey: NSData? {
+    static var privateKey: Data? {
         get {
-        return defaults.dataForKey("PrivateKey")
+        return defaults.data(forKey: "PrivateKey")
         }
         
         set {
@@ -74,7 +74,7 @@ class Settings {
     
     static var lastname: String? {
         get {
-        return defaults.stringForKey("Lastname")
+        return defaults.string(forKey: "Lastname")
         }
         
         set {
@@ -84,7 +84,7 @@ class Settings {
     
     static var firstname: String? {
         get {
-        return defaults.stringForKey("Firstname")
+        return defaults.string(forKey: "Firstname")
         }
         
         set {
@@ -94,7 +94,7 @@ class Settings {
     
     static var middlename: String? {
         get {
-        return defaults.stringForKey("Middlename")
+        return defaults.string(forKey: "Middlename")
         }
         set {
             defaults.setValue(newValue, forKey: "Middlename")
@@ -103,7 +103,7 @@ class Settings {
     
     static var email: String? {
         get {
-        return defaults.stringForKey("Email")
+        return defaults.string(forKey: "Email")
         }
         set {
             defaults.setValue(newValue, forKey: "Email")
@@ -112,7 +112,7 @@ class Settings {
     
     static var mobilePhone: String? {
         get {
-        return defaults.stringForKey("MobilePhone")
+        return defaults.string(forKey: "MobilePhone")
         }
         set {
             defaults.setValue(newValue, forKey: "MobilePhone")
@@ -121,7 +121,7 @@ class Settings {
     
     static var address: String? {
         get {
-        return defaults.stringForKey("Address")
+        return defaults.string(forKey: "Address")
         }
         set {
             defaults.setValue(newValue, forKey: "Address")
@@ -130,7 +130,7 @@ class Settings {
     
     static var workPhone: String? {
         get {
-        return defaults.stringForKey("WorkPhone")
+        return defaults.string(forKey: "WorkPhone")
         }
         set {
             defaults.setValue(newValue, forKey: "WorkPhone")
@@ -139,7 +139,7 @@ class Settings {
     
     static var homePhone: String? {
         get {
-        return defaults.stringForKey("HomePhone")
+        return defaults.string(forKey: "HomePhone")
         }
         set {
             defaults.setValue(newValue, forKey: "HomePhone")
@@ -148,7 +148,7 @@ class Settings {
     
     static var fax: String? {
         get {
-        return defaults.stringForKey("Fax")
+        return defaults.string(forKey: "Fax")
         }
         set {
             defaults.setValue(newValue, forKey: "Fax")
@@ -157,7 +157,7 @@ class Settings {
     
     static var country: String? {
         get {
-        return defaults.stringForKey("Country")
+        return defaults.string(forKey: "Country")
         }
         set {
             defaults.setValue(newValue, forKey: "Country")
@@ -166,7 +166,7 @@ class Settings {
     
     static var state: String? {
         get {
-        return defaults.stringForKey("State")
+        return defaults.string(forKey: "State")
         }
         set {
             defaults.setValue(newValue, forKey: "State")
@@ -175,7 +175,7 @@ class Settings {
     
     static var city: String? {
         get {
-        return defaults.stringForKey("City")
+        return defaults.string(forKey: "City")
         }
         set {
             defaults.setValue(newValue, forKey: "City")
@@ -184,7 +184,7 @@ class Settings {
     
     static var zip: String? {
         get {
-        return defaults.stringForKey("Zip")
+        return defaults.string(forKey: "Zip")
         }
         set {
             defaults.setValue(newValue, forKey: "Zip")

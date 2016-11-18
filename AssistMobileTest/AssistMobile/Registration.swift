@@ -78,13 +78,13 @@ class RegistrationData: SoapRequest {
 }
 
 protocol RegistrationDelegate {
-    func registration(id: String)
-    func registration(faultcode: String?, faultstring: String?)
+    func registration(_ id: String)
+    func registration(_ faultcode: String?, faultstring: String?)
 }
 
 class Registration: SoapService {
-    private var registrationData: RegistrationData
-    private var delegate: RegistrationDelegate
+    fileprivate var registrationData: RegistrationData
+    fileprivate var delegate: RegistrationDelegate
     
     let RegId = ".SOAP-ENV:Envelope.SOAP-ENV:Body.ASS-NS:getRegistrationResponse.registration_id"
     
@@ -101,7 +101,7 @@ class Registration: SoapService {
         return AssistLinks.currentHost + AssistLinks.RegService
     }
     
-    override func finish(values: [String:String]) {
+    override func finish(_ values: [String:String]) {
         if let id = values[RegId] {
             delegate.registration(id)
         } else {

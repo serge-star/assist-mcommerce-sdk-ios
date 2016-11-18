@@ -17,7 +17,7 @@ class SettingsControllerViewController: UIViewController, UIPickerViewDataSource
     
     @IBOutlet weak var useOneClick: UISwitch! {
         didSet {
-            useOneClick.on = Settings.useOneClick
+            useOneClick.isOn = Settings.useOneClick
         }
     }
     
@@ -41,7 +41,7 @@ class SettingsControllerViewController: UIViewController, UIPickerViewDataSource
     
     @IBOutlet weak var useSignature: UISwitch! {
         didSet {
-            useSignature.on = Settings.useSignature
+            useSignature.isOn = Settings.useSignature
         }
     }
     
@@ -54,17 +54,17 @@ class SettingsControllerViewController: UIViewController, UIPickerViewDataSource
         }
     }
     
-    @IBAction func closeView(sender: UIButton) {
-        Settings.useOneClick = useOneClick.on
+    @IBAction func closeView(_ sender: UIButton) {
+        Settings.useOneClick = useOneClick.isOn
         Settings.customerId = customerId.text
         Settings.langauge = language.text
-        Settings.useSignature = useSignature.on
+        Settings.useSignature = useSignature.isOn
         Settings.host = host.text
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         switch pickerView {
         case languagePicker:
             return 1
@@ -75,7 +75,7 @@ class SettingsControllerViewController: UIViewController, UIPickerViewDataSource
         }
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView {
         case languagePicker:
             return languages.count
@@ -86,7 +86,7 @@ class SettingsControllerViewController: UIViewController, UIPickerViewDataSource
         }
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
         case languagePicker:
             return languages[row]
@@ -97,7 +97,7 @@ class SettingsControllerViewController: UIViewController, UIPickerViewDataSource
         }
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView {
         case languagePicker:
             language.text = languages[row]
@@ -110,12 +110,12 @@ class SettingsControllerViewController: UIViewController, UIPickerViewDataSource
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
