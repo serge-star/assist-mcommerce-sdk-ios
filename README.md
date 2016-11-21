@@ -10,39 +10,36 @@
 
 ### Code sample Siwift
 
-'
-import UIKit
-import AssistMobile
+    import UIKit
+    import AssistMobile
 
-class ViewController: UIViewController, AssistPayDelegate {
-    @IBOutlet weak var result: UILabel!  
-    var data = PayData()
-    
+    class ViewController: UIViewController, AssistPayDelegate {
+        @IBOutlet weak var result: UILabel!  
+        var data = PayData()
    
-    @IBAction func startPay(sender: UIButton) {
+        @IBAction func startPay(sender: UIButton) {
 
-       data.merchantId = "123456"
-        data.orderNumber = "test_payment_01"
-        data.orderAmount = "100.05"
-        data.orderComment = "This is a test!"
-        data.orderCurrency = .RUB      
-        data.lastname = "Ivanov"
-        data.firstname = "Ivan"
-        data.middlename = "Ivanovich"
-        data.email = "i3@mail.ru"
-        data.mobilePhone = "+79210000000"
-        data.address = "Nevskiy prospekt, 1"
-        data.country = "Russian Federation"
-        data.state = "Saint-Petersburg"
-        data.city = "Saint-Petersburg"
+            data.merchantId = "123456"
+            data.orderNumber = "test_payment_01"
+            data.orderAmount = "100.05"
+            data.orderComment = "This is a test!"
+            data.orderCurrency = .RUB      
+            data.lastname = "Ivanov"
+            data.firstname = "Ivan"
+            data.middlename = "Ivanovich"
+            data.email = "i3@mail.ru"
+            data.mobilePhone = "+79210000000"
+            data.address = "Nevskiy prospekt, 1"
+            data.country = "Russian Federation"
+            data.state = "Saint-Petersburg"
+            data.city = "Saint-Petersburg"
         
-        let pay = AssistPay(delegate: self)
-        pay.start(self, withData: data)
-    }  
+            let pay = AssistPay(delegate: self)
+            pay.start(self, withData: data)
+        }  
 
-    func payFinished(bill: String, status: PaymentStatus, message: String?) {
-        let msg = message ?? ""
-        result.text = "Finished: bill = \(bill), status = \(status.rawValue), message = \(msg)"
+        func payFinished(bill: String, status: PaymentStatus, message: String?) {
+            let msg = message ?? ""
+            result.text = "Finished: bill = \(bill), status = \(status.rawValue), message = \(msg)"
+        }
     }
-}
-'
