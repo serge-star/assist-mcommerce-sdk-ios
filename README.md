@@ -43,3 +43,49 @@
             result.text = "Finished: bill = \(bill), status = \(status.rawValue), message = \(msg)"
         }
     }
+
+###Code sample Objective C
+
+ViewController.h:
+    #import <UIKit/UIKit.h>
+    #import "AssistMobile/AssistMobile.h"
+  
+    @interface ViewController : UIViewController<AssistPayDelegate>
+    @property (weak, nonatomic) IBOutlet UILabel *result;
+    - (IBAction)pay:(UIButton *)sender;
+ 
+    @end
+
+ViewController.m:
+    #import "ViewController.h"
+    @interface ViewController ()
+ 
+    @property (strong, nonatomic) PayData* data;
+    @end
+ 
+    @implementation ViewController
+    - (IBAction)pay:(UIButton *)sender {
+        if (!_data) {
+            _data = [[PayData alloc] init];
+        }
+    
+        _data.orderAmount = @"100.05";
+        _data.orderNumber = @"test_payment_002";
+        _data.merchantId = @"679471";
+     
+        AssistPay* assistPay = [[AssistPay alloc] initWithDelegate: self];
+        [assistPay start:self withData: _data];
+    }
+ 
+    - (void)payFinished:(NSString * __nonnull)bill status:(NSString * __nonnull)status message:(NSString * __nullable)message
+    {
+        NSString* res = @"status: ";
+        res = [res stringByAppendingString: status];
+        res = [res stringByAppendingString: @", billnumber: "];
+        res = [res stringByAppendingString: bill];
+        res = [res stringByAppendingString: @", message: "];
+        res = [res stringByAppendingString: message];
+        _result.text = res;
+    }
+ 
+    @end
