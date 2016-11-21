@@ -46,7 +46,7 @@
 
 ###Code sample Objective C
 
-ViewController.h:
+ViewController.h
     #import <UIKit/UIKit.h>
     #import "AssistMobile/AssistMobile.h"
   
@@ -56,7 +56,7 @@ ViewController.h:
  
     @end
 
-ViewController.m:
+ViewController.m
     #import "ViewController.h"
     @interface ViewController ()
  
