@@ -8,7 +8,7 @@
 4. Add AssisyMobile.framework to  General->Embedded Binaries property
 5. Add key NSLocationWhenInUseUsageDescription to Info.plist -> Information Property List, set type to String and value 'Permit to send geolocation data to Assist'
 
-### Code sample Siwift
+### Code sample Swift
 
     import UIKit
     import AssistMobile
