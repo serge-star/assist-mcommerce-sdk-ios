@@ -1,7 +1,8 @@
 # Assist SDK for iOS
 
-## Integration
+## Integration simple payments
 
+1. Register your account in Assist
 1. Download the last version of AssistMobile.framework or build it
 2. Add the framework to your project
 3. Set option Build Settings -> Build Options -> Embedded Content Contains Swift Code to YES in project settings
@@ -91,3 +92,47 @@ ViewController.m
     }
  
     @end
+
+## Integration ApplePay payments
+
+1. Perform steps described in 'Integration payments' chapter
+2. Register Apple ID and developer account
+3. Create merchant ID and certificate in developer.apple.com
+4. Switch on setting in your project settings Capabilities -> ApplePay
+5. Switch on your merchant ID in ApplePay settings
+
+### Code sample Swift
+
+    import UIKit
+    import AssistMobile
+
+    class ViewController: UIViewController, AssistPayDelegate {
+        @IBOutlet weak var result: UILabel!  
+        var data = PayData()
+        
+        @available(iOS 10.0, *)
+        @IBAction func payWithApplePay(_ sender: UIButton) {
+            data = PayData()
+            pay = AssistPay(delegate: self)
+            data.merchantId = "your merhcnt id in assist"
+            var apmid = "murchant.id.in.apple"
+            data.login = "your account login in assist"
+            data.password = "your account password in assist"
+            data.orderNumber = "order number"
+            data.orderComment = "comment"
+            data.orderAmount = "100.05"
+            data.orderCurrency = .RUB
+            data.lastname = "Ivanov"
+            data.firstname = "Ivan"
+            data.email = "ivan@mailhost.ru"
+        
+            AssistLinks.currentHost = "https://payments.assist.ru"
+        
+            pay!.startWithApplePay(self, withData: data, applePayMerchantId: apmid)
+        }
+        
+         func payFinished(bill: String, status: PaymentStatus, message: String?) {
+            let msg = message ?? ""
+            result.text = "Finished: bill = \(bill), status = \(status.rawValue), message = \(msg)"
+        }
+    }
