@@ -74,6 +74,9 @@ open class PayData: RequestData {
         case ApplicationName = "ApplicationName"
         case ApplicationVersion = "ApplicationVersion"
         case OsLanguage = "OsLanguage"
+        case Login = "Login"
+        case Password = "Password"
+        case PaymentToken = "PaymentToken"
     }
     
     fileprivate var fieldValues = [Fields : String]()
@@ -231,6 +234,21 @@ open class PayData: RequestData {
     var osLanguage: String? {
         get { return fieldValues[Fields.OsLanguage] }
         set { fieldValues[Fields.OsLanguage] = newValue }
+    }
+    
+    open var login: String? {
+        get { return fieldValues[Fields.Login] }
+        set { fieldValues[Fields.Login] = newValue }
+    }
+    
+    open var password: String? {
+        get { return fieldValues[Fields.Password] }
+        set { fieldValues[Fields.Password] = newValue }
+    }
+    
+    var paymentToken: String? {
+        get { return fieldValues[Fields.PaymentToken] }
+        set { fieldValues[Fields.PaymentToken] = newValue }
     }
     
     open var date: Date?
