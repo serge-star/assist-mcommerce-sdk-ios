@@ -8,6 +8,7 @@
 
 import UIKit
 import AssistMobile
+import PassKit
 
 class ViewController: UIViewController, AssistPayDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
@@ -45,8 +46,13 @@ class ViewController: UIViewController, AssistPayDelegate, UIPickerViewDataSourc
     var data = PayData()
     var currencyes = [Currency.RUB.rawValue, Currency.USD.rawValue, Currency.EUR.rawValue, Currency.BYR.rawValue, Currency.UAH.rawValue]
     
+    var defaults: UserDefaults?
+    
+    var pay: AssistPay?
+    
     @IBAction func startPay(_ sender: UIButton) {
-        
+        data = PayData()
+        pay = AssistPay(delegate: self)
         data.merchantId = merchantId.text
         data.orderNumber = orderNumber.text
         data.orderAmount = orderAmount.text
@@ -80,11 +86,14 @@ class ViewController: UIViewController, AssistPayDelegate, UIPickerViewDataSourc
         data.city = Settings.city
         data.zip = Settings.zip
         
-        let pay = AssistPay(delegate: self)
-        pay.start(self, withData: data)
+        AssistLinks.currentHost = Settings.host ?? AssistLinks.currentHost
+        
+        pay!.start(self, withData: data)
     }
     
     @IBAction func getResult(_ sender: UIButton) {
+        data = PayData()
+        pay = AssistPay(delegate: self)
         data.merchantId = merchantId.text
         data.orderNumber = orderNumber.text
         data.orderAmount = orderAmount.text
@@ -118,14 +127,39 @@ class ViewController: UIViewController, AssistPayDelegate, UIPickerViewDataSourc
         data.city = Settings.city
         data.zip = Settings.zip
         
-        let pay = AssistPay(delegate: self)
-        pay.getResult(data)
+        AssistLinks.currentHost = Settings.host ?? AssistLinks.currentHost
+        
+        pay!.getResult(data)
+    }
+    
+    @available(iOS 10.0, *)
+    @IBAction func payWithApplePay(_ sender: UIButton) {
+        data = PayData()
+        pay = AssistPay(delegate: self)
+        data.merchantId = merchantId.text
+        var apmid = ""
+        if let df = defaults {
+            data.login = df.string(forKey: "user_login")!
+            data.password = df.string(forKey: "user_password")!
+            apmid = df.string(forKey: "ap_merchant_id")!
+        }
+        data.orderNumber = orderNumber.text
+        data.orderComment = orderComment.text
+        data.orderAmount = orderAmount.text
+        data.orderCurrency = Currency(rawValue: orderCurrency.text ?? "")
+        data.lastname = Settings.lastname
+        data.firstname = Settings.firstname
+        data.email = Settings.email
+        
+        AssistLinks.currentHost = Settings.host ?? AssistLinks.currentHost
+        
+        pay!.startWithApplePay(self, withData: data, applePayMerchantId: apmid)
     }
     
     override func viewDidLoad() {
-        merchantId.text = "679471"
-        
-        
+        merchantId.text = "928654"
+        registerSettingsBundle()
+        updateDefaults()
         super.viewDidLoad()
     }
     
@@ -174,6 +208,18 @@ class ViewController: UIViewController, AssistPayDelegate, UIPickerViewDataSourc
             }
         }
         return nil
+    }
+    
+    func registerSettingsBundle(){
+        let appDefaults = ["user_login": "sale928654",
+                           "user_password": "sale928654",
+                           "ap_merchant_id": "merchant.ru.assist.ApplePayTest"]
+        UserDefaults.standard.register(defaults: appDefaults)
+        UserDefaults.standard.synchronize()
+    }
+    
+    func updateDefaults() {
+        defaults = UserDefaults.standard
     }
     
 }

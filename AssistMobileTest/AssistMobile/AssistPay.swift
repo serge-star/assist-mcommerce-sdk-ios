@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PassKit
 
 public enum PaymentStatus: String
 {
@@ -32,11 +33,18 @@ public protocol AssistPayDelegate: class {
 open class AssistPay: NSObject {
     
     fileprivate var pay: PayController
+    fileprivate var applePay: AnyObject?
     
     public init(delegate: AssistPayDelegate) {
         let bundle = Bundle(identifier: "ru.assist.AssistMobile")
         pay = PayController(nibName: "PayView", bundle: bundle)
         pay.payDelegate = delegate
+        
+        if #available(iOS 10.0, *) {
+            applePay = ApplePayPayment(delegate: delegate)
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     open func start(_ controller: UIViewController, withData: PayData) {
@@ -47,6 +55,11 @@ open class AssistPay: NSObject {
     open func getResult(_ withData: PayData) {
         pay.payData = withData
         pay.getResult()
+    }
+    
+    @available(iOS 10.0, *)
+    open func startWithApplePay(_ controller: UIViewController, withData: PayData, applePayMerchantId: String) {
+        (applePay! as! ApplePayPayment).pay(controller, withData: withData, withMerchantId: applePayMerchantId)
     }
     
 }
