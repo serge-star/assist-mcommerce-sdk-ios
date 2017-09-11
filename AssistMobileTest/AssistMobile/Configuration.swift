@@ -17,13 +17,13 @@ open class AssistLinks {
     static let RegService = "/registration/mobileregistration.cfm"
     static let PayPagesService = "/pay/order.cfm"
     static let ResultService = "/orderresult/mobileorderresult.cfm"
-    static let ApplePayService = "/pay/applepayq.cfm"
+    static let ApplePayService = "/pay/tokenpay.cfm"
 }
 
 class Configuration {
     
     fileprivate static var regIdField: String {
-        return "\(appName).\(version).AssistRegId"
+        return "\(appName!).\(version!).AssistRegId"
     }
     
     static let defaults = UserDefaults.standard
