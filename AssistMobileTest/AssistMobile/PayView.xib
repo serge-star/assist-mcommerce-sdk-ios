@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,32 +23,32 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lzx-RL-E2h">
-                    <rect key="frame" x="0.0" y="75" width="375" height="592"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="cSU-Qx-EKQ" appends="YES" id="soJ-IN-Pso"/>
+                    </connections>
                 </webView>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAE-kb-YTF">
-                    <rect key="frame" x="0.0" y="31" width="375" height="44"/>
-                    <items>
-                        <navigationItem title="Title" id="uUe-2J-kTk"/>
-                    </items>
-                </navigationBar>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="E7a-dW-4Dc">
-                    <rect key="frame" x="177" y="361" width="20" height="20"/>
+                    <rect key="frame" x="177" y="324" width="20" height="20"/>
                 </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="EAE-kb-YTF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Aal-g3-1DH"/>
-                <constraint firstItem="EAE-kb-YTF" firstAttribute="leading" secondItem="lzx-RL-E2h" secondAttribute="leading" id="D4X-py-yQX"/>
-                <constraint firstItem="lzx-RL-E2h" firstAttribute="top" secondItem="EAE-kb-YTF" secondAttribute="bottom" id="Dp6-sk-yuv"/>
-                <constraint firstItem="EAE-kb-YTF" firstAttribute="trailing" secondItem="lzx-RL-E2h" secondAttribute="trailing" id="Tal-TF-sB7"/>
-                <constraint firstItem="EAE-kb-YTF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="31" id="UEl-9E-JJr"/>
-                <constraint firstAttribute="trailing" secondItem="EAE-kb-YTF" secondAttribute="trailing" id="UzX-Sp-daT"/>
-                <constraint firstItem="EAE-kb-YTF" firstAttribute="centerX" secondItem="E7a-dW-4Dc" secondAttribute="centerX" id="eKk-xV-z9e"/>
-                <constraint firstAttribute="bottom" secondItem="lzx-RL-E2h" secondAttribute="bottom" id="tXe-Rf-YD0"/>
-                <constraint firstItem="lzx-RL-E2h" firstAttribute="centerY" secondItem="E7a-dW-4Dc" secondAttribute="centerY" id="u4M-bh-dLd"/>
+                <constraint firstItem="E7a-dW-4Dc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="3DU-Qz-ubi"/>
+                <constraint firstItem="lzx-RL-E2h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="Qlg-Hh-Abb"/>
+                <constraint firstItem="lzx-RL-E2h" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZuE-pA-fR1"/>
+                <constraint firstItem="lzx-RL-E2h" firstAttribute="centerX" secondItem="E7a-dW-4Dc" secondAttribute="centerX" id="gBt-Fd-Nut"/>
+                <constraint firstAttribute="bottom" secondItem="lzx-RL-E2h" secondAttribute="bottom" id="hsx-dC-VFL"/>
+                <constraint firstAttribute="trailing" secondItem="lzx-RL-E2h" secondAttribute="trailing" id="xqw-NO-yYP"/>
             </constraints>
-            <point key="canvasLocation" x="366.5" y="324.5"/>
+            <point key="canvasLocation" x="370.5" y="249.5"/>
         </view>
+        <swipeGestureRecognizer direction="right" id="cSU-Qx-EKQ">
+            <connections>
+                <action selector="back:" destination="-1" id="QmG-Cn-acS"/>
+            </connections>
+        </swipeGestureRecognizer>
     </objects>
 </document>

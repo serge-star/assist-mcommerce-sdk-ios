@@ -123,14 +123,14 @@ class Signature {
     static func nsDataToPrivateSecKey(_ data: Data) -> SecKey?
     {
         let tempTag = "ru.assist.mobile.sdk.temp"
-        var parameters = [
+        var parameters : [String: Any] = [
             String(kSecClass): kSecClassKey,
             String(kSecAttrApplicationTag): tempTag,
             String(kSecValueData): data,
             String(kSecAttrKeyClass): kSecAttrKeyClassPrivate,
             String(kSecAttrKeyType): kSecAttrKeyTypeRSA,
             String(kSecReturnPersistentRef): kCFBooleanTrue
-        ] as [String : Any]
+        ]
         var keyRefPtr: CFTypeRef?
         let result = SecItemAdd(parameters as CFDictionary, &keyRefPtr)
         

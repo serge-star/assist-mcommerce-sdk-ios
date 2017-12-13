@@ -203,4 +203,7 @@ class PayController: UIViewController, UIWebViewDelegate, RegistrationDelegate, 
         }
     }
     
+    @IBAction func back(_ sender: UISwipeGestureRecognizer) {
+        getResult()
+    }
 }

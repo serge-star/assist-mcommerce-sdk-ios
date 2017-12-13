@@ -259,7 +259,9 @@ open class PayData: RequestData {
             req += "\(key.rawValue)=\(value)&"
         }
         req.remove(at: req.characters.index(before: req.endIndex))
+        
         return req
     }
     
 }
+

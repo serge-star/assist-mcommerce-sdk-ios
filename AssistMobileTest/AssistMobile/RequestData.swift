@@ -35,4 +35,13 @@ open class RequestData: NSObject {
         
         return request as URLRequest
     }
+    
+    func urlencode(value: String) -> String {
+        let allowedCharacterSet = (CharacterSet(charactersIn: "!*'();:@&=+$,/?%#[] ").inverted)
+        
+        if let escapedString = value.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) {
+            return escapedString
+        }
+        return value
+    }
 }
