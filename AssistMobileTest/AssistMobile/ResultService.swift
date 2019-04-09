@@ -18,7 +18,7 @@ class ResultRequest: SoapRequest {
     }
     
     init() {
-        super.init(soapAction: "http://www.paysecure.ru/ws/orderresult")
+        super.init(soapAction: AssistLinks.currentHost + "/ws/orderresult")
     }
     
     var deviceId: String? {

@@ -44,7 +44,7 @@ class ViewController: UIViewController, AssistPayDelegate, UIPickerViewDataSourc
     let currencyPicker = UIPickerView()
     
     var data = PayData()
-    var currencyes = [Currency.RUB.rawValue, Currency.USD.rawValue, Currency.EUR.rawValue, Currency.BYR.rawValue, Currency.UAH.rawValue]
+    var currencyes = [Currency.RUB.rawValue, Currency.USD.rawValue, Currency.EUR.rawValue, Currency.BYN.rawValue, Currency.UAH.rawValue]
     
     var defaults: UserDefaults?
     

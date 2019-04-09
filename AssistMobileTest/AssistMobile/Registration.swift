@@ -19,7 +19,7 @@ class RegistrationData: SoapRequest {
     }
     
     init() {
-        super.init(soapAction: "http://www.paysecure.ru/ws/getregistration")
+        super.init(soapAction: AssistLinks.currentHost + "/ws/getregistration")
     }
     
     var name: String? {

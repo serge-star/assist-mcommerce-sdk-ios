@@ -1,0 +1,11 @@
+framework module AssistMobile {
+  umbrella header "AssistMobile.h"
+
+  export *
+  module * { export * }
+}
+
+module AssistMobile.Swift {
+    header "AssistMobile-Swift.h"
+    requires objc
+}

@@ -10,6 +10,7 @@ import UIKit
 
 extension NSURLRequest {
     static func allowsAnyHTTPSCertificate(forHost host: String) -> Bool {
+        return true;
         return host == "payments.t.paysecure.ru" || host == "payments.d.paysecure.ru"
     }
 }
@@ -36,12 +37,12 @@ class PayController: UIViewController, UIWebViewDelegate, RegistrationDelegate, 
         
         if let params = data {
             collectDeviceData(params)
-            
             if let regId = Configuration.regId {
                 params.registrationId = regId
                 registrationCompleted = true
                 continuePay()
             } else {
+                registrationCompleted = false
                 startRegistration()
             }
         }
@@ -64,7 +65,6 @@ class PayController: UIViewController, UIWebViewDelegate, RegistrationDelegate, 
         regData.name = Configuration.appName
         regData.version = Configuration.version
         regData.deviceId = Configuration.uuid
-        regData.shop = data?.merchantId
         let reg = Registration(regData: regData, regDelegate: self)
         reg.start()
     }

@@ -12,7 +12,7 @@ import UIKit
 
 open class AssistLinks {
     open static var currentHost = hosts[0]
-    open static let hosts = ["https://payments.t.paysecure.ru", "https://payments.d.paysecure.ru", "https://payments.paysecure.ru", "https://test.paysecure.ru", "https://test.paysec.by", "https://payments.paysec.by" ]
+    open static let hosts = ["https://payments.demo.paysecure.ru", "https://payments.t.paysecure.ru", "https://payments.d.paysecure.ru", "https://payments.paysecure.ru", "https://test.paysecure.ru", "https://test.paysec.by", "https://payments.paysec.by" ]
     
     static let RegService = "/registration/mobileregistration.cfm"
     static let PayPagesService = "/pay/order.cfm"
@@ -30,15 +30,19 @@ class Configuration {
     
     static var regId: String? {
         get {
-        if let regId = defaults.string(forKey: regIdField) {
-        return regId
-    } else {
-        return nil
-        }
+            if let regId = defaults.string(forKey: regIdField) {
+                return regId
+            } else {
+                return nil
+            }
         }
         
         set {
-            defaults.setValue(newValue, forKey: regIdField)
+            if let unwr = newValue, unwr.count > 1 {
+                defaults.setValue(unwr, forKey: regIdField)
+            } else {
+                defaults.setValue(nil, forKey: regIdField)
+            }
         }
     }
     
@@ -49,6 +53,7 @@ class Configuration {
     }
     
     static var version: String? {
+        return "1.7.0"
         return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
     }
     

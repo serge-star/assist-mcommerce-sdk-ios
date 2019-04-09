@@ -19,7 +19,7 @@ public enum Currency: String {
     case RUB = "RUB"
     case USD = "USD"
     case EUR = "EUR"
-    case BYR = "BYR"
+    case BYN = "BYN"
     case UAH = "UAH"
 }
 
@@ -80,7 +80,45 @@ open class PayData: RequestData {
     }
     
     fileprivate var fieldValues = [Fields : String]()
-    
+
+    open var recurringIndicator: Bool {
+        get { return fieldValues[Fields.RecurringIndicator] == "1" }
+        set { fieldValues[Fields.RecurringIndicator] = newValue ? "1" : "0" }
+    }
+
+    open var recurringMinAmount: String? {
+        get { return fieldValues[Fields.RecurringMinAmount] }
+        set { fieldValues[Fields.RecurringMinAmount] = newValue }
+    }
+
+    open var recurringMaxAmount: String? {
+        get { return fieldValues[Fields.RecurringMaxAmount] }
+        set { fieldValues[Fields.RecurringMaxAmount] = newValue }
+    }
+
+    open var recurringPeriod: String? {
+        get { return fieldValues[Fields.RecurringPeriod] }
+        set { fieldValues[Fields.RecurringPeriod] = newValue }
+    }
+
+    open var recurringMaxDate: Date? {
+        get {
+            guard let dateString = fieldValues[Fields.RecurringMaxDate] else { return nil }
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            return dateFormatter.date(from: dateString)
+        }
+        set {
+            guard let date = newValue else {
+                fieldValues[Fields.RecurringMaxDate] = nil
+                return
+            }
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            fieldValues[Fields.RecurringMaxDate] = dateFormatter.string(from: date)
+        }
+    }
+
     open var merchantId: String? {
         get { return fieldValues[Fields.MerchantId] }
         set { fieldValues[Fields.MerchantId] = newValue }
@@ -198,7 +236,7 @@ open class PayData: RequestData {
     
     var registrationId: String? {
         get { return fieldValues[Fields.RegistrationId] }
-        set { fieldValues[Fields.RegistrationId] = newValue }
+        set { fieldValues[Fields.RegistrationId] = newValue?.count == 1 ? nil : newValue }
     }
     
     var deviceUniqueId: String? {
