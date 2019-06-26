@@ -81,27 +81,27 @@ open class PayData: RequestData {
     
     fileprivate var fieldValues = [Fields : String]()
 
-    open var recurringIndicator: Bool {
+    @objc open var recurringIndicator: Bool {
         get { return fieldValues[Fields.RecurringIndicator] == "1" }
         set { fieldValues[Fields.RecurringIndicator] = newValue ? "1" : "0" }
     }
 
-    open var recurringMinAmount: String? {
+    @objc open var recurringMinAmount: String? {
         get { return fieldValues[Fields.RecurringMinAmount] }
         set { fieldValues[Fields.RecurringMinAmount] = newValue }
     }
 
-    open var recurringMaxAmount: String? {
+    @objc open var recurringMaxAmount: String? {
         get { return fieldValues[Fields.RecurringMaxAmount] }
         set { fieldValues[Fields.RecurringMaxAmount] = newValue }
     }
 
-    open var recurringPeriod: String? {
+    @objc open var recurringPeriod: String? {
         get { return fieldValues[Fields.RecurringPeriod] }
         set { fieldValues[Fields.RecurringPeriod] = newValue }
     }
 
-    open var recurringMaxDate: Date? {
+    @objc open var recurringMaxDate: Date? {
         get {
             guard let dateString = fieldValues[Fields.RecurringMaxDate] else { return nil }
             let dateFormatter = DateFormatter()
@@ -119,22 +119,22 @@ open class PayData: RequestData {
         }
     }
 
-    open var merchantId: String? {
+    @objc open var merchantId: String? {
         get { return fieldValues[Fields.MerchantId] }
         set { fieldValues[Fields.MerchantId] = newValue }
     }
     
-    open var customerId: String? {
+    @objc open var customerId: String? {
         get { return fieldValues[Fields.CustomerId] }
         set { fieldValues[Fields.CustomerId] = newValue }
     }
     
-    open var orderNumber: String? {
+    @objc open var orderNumber: String? {
         get { return fieldValues[Fields.OrderNumber] }
         set { fieldValues[Fields.OrderNumber] = newValue }
     }
     
-    open var languageStr: String? {
+    @objc open var languageStr: String? {
         get { return fieldValues[Fields.Language] }
         set { fieldValues[Fields.Language] = newValue }
     }
@@ -144,17 +144,17 @@ open class PayData: RequestData {
         set { languageStr = newValue?.rawValue }
     }
     
-    open var orderAmount: String? {
+    @objc open var orderAmount: String? {
         get { return fieldValues[Fields.OrderAmount] }
         set { fieldValues[Fields.OrderAmount] = newValue }
     }
     
-    open var orderComment: String? {
+    @objc open var orderComment: String? {
         get { return fieldValues[Fields.OrderComment] }
         set { fieldValues[Fields.OrderComment] = newValue }
     }
     
-    open var orderCurrencyStr: String? {
+    @objc open var orderCurrencyStr: String? {
         get { return fieldValues[Fields.OrderCurrency] }
         set { fieldValues[Fields.OrderCurrency] = newValue }
     }
@@ -164,72 +164,72 @@ open class PayData: RequestData {
         set { orderCurrencyStr = newValue?.rawValue }
     }
     
-    open var lastname: String? {
+    @objc open var lastname: String? {
         get { return fieldValues[Fields.Lastname] }
         set { fieldValues[Fields.Lastname] = newValue }
     }
     
-    open var firstname: String? {
+    @objc open var firstname: String? {
         get { return fieldValues[Fields.Firstname] }
         set { fieldValues[Fields.Firstname] = newValue }
     }
     
-    open var middlename: String? {
+    @objc open var middlename: String? {
         get { return fieldValues[Fields.Middlename] }
         set { fieldValues[Fields.Middlename] = newValue }
     }
     
-    open var email: String? {
+    @objc open var email: String? {
         get { return fieldValues[Fields.Email] }
         set { fieldValues[Fields.Email] = newValue }
     }
     
-    open var address: String? {
+    @objc open var address: String? {
         get { return fieldValues[Fields.Address] }
         set { fieldValues[Fields.Address] = newValue }
     }
     
-    open var homePhone: String? {
+    @objc open var homePhone: String? {
         get { return fieldValues[Fields.HomePhone] }
         set { fieldValues[Fields.HomePhone] = newValue }
     }
     
-    open var workPhone: String? {
+    @objc open var workPhone: String? {
         get { return fieldValues[Fields.WorkPhone] }
         set { fieldValues[Fields.WorkPhone] = newValue }
     }
     
-    open var mobilePhone: String? {
+    @objc open var mobilePhone: String? {
         get { return fieldValues[Fields.MobilePhone] }
         set { fieldValues[Fields.MobilePhone] = newValue }
     }
     
-    open var fax: String? {
+    @objc open var fax: String? {
         get { return fieldValues[Fields.Fax] }
         set { fieldValues[Fields.Fax] = newValue }
     }
     
-    open var country: String? {
+    @objc open var country: String? {
         get { return fieldValues[Fields.Country] }
         set { fieldValues[Fields.Country] = newValue }
     }
     
-    open var state: String? {
+    @objc open var state: String? {
         get { return fieldValues[Fields.State] }
         set { fieldValues[Fields.State] = newValue }
     }
     
-    open var city: String? {
+    @objc open var city: String? {
         get { return fieldValues[Fields.City] }
         set { fieldValues[Fields.City] = newValue }
     }
     
-    open var zip: String? {
+    @objc open var zip: String? {
         get { return fieldValues[Fields.Zip] }
         set { fieldValues[Fields.Zip] = newValue }
     }
     
-    open var signature: String? {
+    @objc open var signature: String? {
         get { return fieldValues[Fields.Signature] }
         set { fieldValues[Fields.Signature] = newValue }
     }
@@ -274,12 +274,12 @@ open class PayData: RequestData {
         set { fieldValues[Fields.OsLanguage] = newValue }
     }
     
-    open var login: String? {
+    @objc open var login: String? {
         get { return fieldValues[Fields.Login] }
         set { fieldValues[Fields.Login] = newValue }
     }
     
-    open var password: String? {
+    @objc open var password: String? {
         get { return fieldValues[Fields.Password] }
         set { fieldValues[Fields.Password] = newValue }
     }
@@ -289,14 +289,14 @@ open class PayData: RequestData {
         set { fieldValues[Fields.PaymentToken] = newValue }
     }
     
-    open var date: Date?
+    @objc open var date: Date?
     
     override func buildRequestString() -> String {
         var req = String()
         for (key, value) in fieldValues {
             req += "\(key.rawValue)=\(value)&"
         }
-        req.remove(at: req.characters.index(before: req.endIndex))
+        req.remove(at: req.index(before: req.endIndex))
         
         return req
     }
