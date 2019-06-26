@@ -88,14 +88,13 @@ class PayController: UIViewController, UIWebViewDelegate, RegistrationDelegate, 
     func webViewDidFinishLoad(_ webView: UIWebView) {
         wait.stopAnimating()
     }
-    
+
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        
         print("WebView delegate");
-        
+
         if let url = request.url {
             print("URL: \(url.path)")
-            
+
             let path = url.path
             if path.hasSuffix("result.cfm") {
                 webView.stopLoading()
@@ -105,9 +104,9 @@ class PayController: UIViewController, UIWebViewDelegate, RegistrationDelegate, 
                 repeated = true
                 getResult()
             }
-    
+
         }
-        
+
         return true
     }
     

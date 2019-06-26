@@ -83,8 +83,7 @@ class ApplePayPayment: NSObject, PKPaymentAuthorizationViewControllerDelegate, D
         } else {
             payDelegate.payFinished("", status: "ERROR", message: "Amount should be greather than zero.")
             return
-        }
-        
+        }        
         if let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request) {
             applePayController.delegate = self
             if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: supportedPaymentNetworks) {
